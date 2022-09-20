@@ -173,6 +173,10 @@ body {
   color: #292e47;
 }
 
+.collection-item-other {
+  text-decoration: none;
+}
+
 .nav-link {
   font-family: Roboto, sans-serif;
   color: #6b708d;

@@ -177,6 +177,10 @@ body {
   text-decoration: none;
 }
 
+.collection-item-otherproject {
+  text-decoration: none;
+}
+
 .nav-link {
   font-family: Roboto, sans-serif;
   color: #6b708d;
@@ -481,6 +485,14 @@ body {
 }
 
 .project-title {
+  margin: 30px 30px 20px;
+  color: #292e47;
+  font-size: 24px;
+  line-height: 115%;
+  font-weight: 500;
+}
+
+.project-titlei {
   margin: 30px 30px 20px;
   color: #292e47;
   font-size: 24px;
@@ -1158,6 +1170,15 @@ body {
     height: 100px;
   }
 
+  .main-project {
+    margin-top: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
   .emoji.top-right {
     width: 100px;
     height: 100px;
@@ -1392,6 +1413,9 @@ body {
   }
 
   .collection-item {
+    max-width: 100%;
+  }
+  .collection-items {
     max-width: 100%;
   }
 }

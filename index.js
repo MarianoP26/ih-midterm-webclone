@@ -2,11 +2,12 @@ let currentProjectNumber = window.location.search.split('?')[1];
 
 let url = "https://jsonplaceholder.typicode.com";
 
-let headingProject = document.querySelectorAll(".project-title");
+let imageProject = document.querySelector(".prj-image");
+let headingProject = document.querySelectorAll(".project-titlei");
 let descProject = document.querySelectorAll(".project-description");
 
 let projectContainer = document.querySelectorAll('.collection-item');
-let otherProjects = document.querySelectorAll('.collection-item-other');
+let otherProjects = document.querySelectorAll('.collection-item-otherproject');
 
 let projectTitle = document.querySelector('.project-titlep');
 let projectText = document.querySelector('.project-body');
@@ -23,11 +24,14 @@ let projectText = document.querySelector('.project-body');
 
 const setProject = () => {
   if (currentProjectNumber) {
+    imageProject.style.display = 'block';
     fetch(`${url}/posts/${currentProjectNumber}`).then(response => response.json()).then(post => {
       projectTitle.innerText = post.title;
       projectText.innerText = post.body;
     })
     .catch(error => console.log(error));
+  } else {
+    imageProject.style.display = 'none';
   }
 }
 
@@ -39,7 +43,6 @@ const addHrefs = () => {
     for(let i = 0; i < posts.length; i++) {
       if(projectContainer.length > 0) {
         projectContainer[i].setAttribute('href',`projects.html?${posts[i].id}`);
-        console.log(projectContainer[i]);
       }
       if(otherProjects.length > 0) {
         otherProjects[i].setAttribute('href',`projects.html?${posts[i].id}`);
@@ -47,6 +50,7 @@ const addHrefs = () => {
     }
   }).catch(error => console.log(error));
 }
+
 
 
 

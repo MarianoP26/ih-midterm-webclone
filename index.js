@@ -58,3 +58,53 @@ const addHrefs = () => {
 fetchPosts();
 addHrefs();
 setProject();
+
+
+
+const menu = document.querySelector('.w-nav-button');
+const menuLinks = document.querySelector('.navbar__menu');
+
+
+const mobileMenu = () =>{
+  menu.classList.toggle('is-active');
+  menuLinks.classList.toggle('active');
+  console.log('hay');
+}
+
+const hideMobileMenu = () =>{
+  const menuBars = document.querySelector('.is-active');
+  if(window.innerWidth <= 768 && menuBars){
+      menu.classList.toggle('is-active');
+      menuLinks.classList.remove('active');
+  }
+}
+
+menuLinks.addEventListener('click', hideMobileMenu);
+
+menu.addEventListener('click', mobileMenu);
+
+//Contact 
+
+let form = document.querySelector('.email-form');
+let postUrl = "http://localhost:8000/messages";
+
+const postData = (event) => {
+  event.preventDefault();
+
+  let data = {name: document.querySelector("#name"), 
+    email: document.querySelector('#name-2'),
+    phone: document.querySelector('#name-3'),
+    message: document.querySelector('#field')};
+  
+  let onSuccess = document.querySelector('.w-form-done');
+  let onFail = document.querySelector('.w-form-fail');
+
+  fetch(postUrl, {method: 'POST', headers: {'Content-Type': 'application/json'},body: JSON.stringify(data)}
+  ).then(results => results.json()).then(
+    onSuccess.style.visibility = 'visible'
+  ).catch(error => {
+    onFail.style.visibility = 'visible';
+    console.log(error)});
+}
+
+form.addEventListener('submit', postData);
